@@ -1,0 +1,9 @@
+image: registry.choerodon.pku-hit.com/library/cibase:0.2.2
+
+stages:
+  - mvn-deploy
+
+deploy-file-lib:
+  stage: mvn-deploy
+  script:
+    - mvn -DskipTests=true -U clean deploy;
