@@ -9,10 +9,10 @@ import io.swagger.annotations.ApiModelProperty;
 @ApiModel(value = "BaseResponse", description = "基础Body返回值定义")
 public class BaseResponse {
 
-    @ApiModelProperty(example = "RC00000")
+    @ApiModelProperty(example = "200")
     private String code;
 
-    @ApiModelProperty(example = "Success")
+    @ApiModelProperty(example = "成功")
     private String info;
 
     public BaseResponse() {

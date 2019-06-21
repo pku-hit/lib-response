@@ -4,8 +4,8 @@ package com.founder.ihc.response;
  * @author adam
  */
 public class ResponseCode {
-    public static final ResponseCode Success = new ResponseCode("RC00000", "成功");
-    public static final ResponseCode Error = new ResponseCode("RC90000", "失败");
+    public static final ResponseCode Success = new ResponseCode("200", "成功");
+    public static final ResponseCode Error = new ResponseCode("90000", "失败");
 
     private String code;
     private String info;
