@@ -46,4 +46,16 @@ public class BaseResponse {
     public static BaseResponse fromResponseCode(ResponseCode responseCode) {
         return new BaseResponse(responseCode);
     }
+
+    public boolean isSuccess() {
+        return this.getCode().equals(ResponseCode.Success.getCode());
+    }
+
+    public boolean isError() {
+        return isError(ResponseCode.Error);
+    }
+
+    public boolean isError(ResponseCode rc) {
+        return this.getCode().equals(rc.getCode());
+    }
 }
