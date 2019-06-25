@@ -1,5 +1,6 @@
 package com.founder.ihc.response;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
@@ -46,15 +47,15 @@ public class BaseResponse {
     public static BaseResponse fromResponseCode(ResponseCode responseCode) {
         return new BaseResponse(responseCode);
     }
-
+    @JsonIgnore
     public boolean isSuccess() {
         return this.getCode().equals(ResponseCode.Success.getCode());
     }
-
+    @JsonIgnore
     public boolean isError() {
         return isError(ResponseCode.Error);
     }
-
+    @JsonIgnore
     public boolean isError(ResponseCode rc) {
         return this.getCode().equals(rc.getCode());
     }
