@@ -6,6 +6,7 @@ package com.founder.ihc.response;
 public class ResponseCode {
     public static final ResponseCode Success = new ResponseCode("200", "成功");
     public static final ResponseCode Error = new ResponseCode("90000", "失败");
+    public static final ResponseCode ErrorDependentService = new ResponseCode("80000", "内部服务异常");
 
     private String code;
     private String info;
