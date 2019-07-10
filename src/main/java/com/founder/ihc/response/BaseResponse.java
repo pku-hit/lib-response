@@ -54,8 +54,8 @@ public class BaseResponse {
     }
 
     @JsonIgnore
-    public boolean isError() {
-        return isError(ResponseCode.Error);
+    public boolean isNotSuccess() {
+        return !isSuccess();
     }
 
     @JsonIgnore
