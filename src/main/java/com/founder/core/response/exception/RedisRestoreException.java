@@ -1,4 +1,4 @@
-package com.founder.ihc.response.exception;
+package com.founder.core.response.exception;
 
 public class RedisRestoreException extends RuntimeException {
     private static final String MSG_FMT = "Redis exception occurs in service %s.";

@@ -1,4 +1,4 @@
-package com.founder.ihc.response;
+package com.founder.core.response;
 
 import io.swagger.annotations.ApiModel;
 

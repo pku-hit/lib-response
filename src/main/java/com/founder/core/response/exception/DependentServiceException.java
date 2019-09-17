@@ -1,4 +1,4 @@
-package com.founder.ihc.response.exception;
+package com.founder.core.response.exception;
 
 /**
  * 公共异常

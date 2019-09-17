@@ -1,4 +1,4 @@
-package com.founder.ihc.response;
+package com.founder.core.response;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.swagger.annotations.ApiModel;
@@ -10,7 +10,7 @@ import io.swagger.annotations.ApiModelProperty;
 @ApiModel(value = "BaseResponse", description = "基础Body返回值定义")
 public class BaseResponse {
 
-    @ApiModelProperty(example = "200")
+    @ApiModelProperty(example = "RC00000")
     private String code;
 
     @ApiModelProperty(example = "成功")
@@ -60,7 +60,7 @@ public class BaseResponse {
 
     @JsonIgnore
     public boolean isDependentServiceError() {
-        return isError(ResponseCode.ErrorDependentService);
+        return isError(ResponseCode.DependentServiceError);
     }
 
     @JsonIgnore

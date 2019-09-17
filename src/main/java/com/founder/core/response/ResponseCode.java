@@ -1,12 +1,14 @@
-package com.founder.ihc.response;
+package com.founder.core.response;
 
 /**
  * @author adam
  */
 public class ResponseCode {
-    public static final ResponseCode Success = new ResponseCode("200", "成功");
-    public static final ResponseCode Error = new ResponseCode("90000", "失败");
-    public static final ResponseCode ErrorDependentService = new ResponseCode("80000", "内部服务异常");
+    public static final ResponseCode Success = new ResponseCode("RC00000", "成功");
+
+    public static final ResponseCode DependentServiceError = new ResponseCode("RC70000", "服务调用失败");
+    public static final ResponseCode DBError = new ResponseCode("RC80000", "数据库操作失败");
+    public static final ResponseCode SysError = new ResponseCode("RC90000", "系统内部错误");
 
     private String code;
     private String info;
