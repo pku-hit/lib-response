@@ -9,10 +9,6 @@ import io.swagger.annotations.ApiModel;
 @ApiModel(value = "PageResponse", description = "通用分页返回结构")
 public class PageResponse<T> extends GenericResponse<PageInfo<T>> {
 
-    public PageResponse() {
-        super();
-    }
-
     public PageResponse(ResponseCode responseCode) {
         super(responseCode);
     }

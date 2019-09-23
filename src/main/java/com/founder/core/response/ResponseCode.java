@@ -5,10 +5,10 @@ package com.founder.core.response;
  */
 public class ResponseCode {
     public static final ResponseCode Success = new ResponseCode("RC00000", "成功");
-
-    public static final ResponseCode DependentServiceError = new ResponseCode("RC70000", "服务调用失败");
-    public static final ResponseCode DBError = new ResponseCode("RC80000", "数据库操作失败");
-    public static final ResponseCode SysError = new ResponseCode("RC90000", "系统内部错误");
+    public static final ResponseCode ParamError = new ResponseCode("RC60000", "参数错误: %s.");
+    public static final ResponseCode DependentServiceError = new ResponseCode("RC70000", "服务调用失败: %s.");
+    public static final ResponseCode DBError = new ResponseCode("RC80000", "数据库操作失败: %s.");
+    public static final ResponseCode SysError = new ResponseCode("RC90000", "系统内部错误: %s.");
 
     private String code;
     private String info;

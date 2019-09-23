@@ -16,11 +16,8 @@ public class BaseResponse {
     @ApiModelProperty(example = "成功")
     private String info;
 
-    public BaseResponse() {
-    }
-
-    public BaseResponse(ResponseCode responseCode) {
-        this.init(responseCode);
+    public BaseResponse(ResponseCode responseCode, String... params) {
+        this.init(responseCode, params);
     }
 
     public String getCode() {
@@ -39,9 +36,9 @@ public class BaseResponse {
         this.info = info;
     }
 
-    public void init(ResponseCode responseCode) {
+    public void init(ResponseCode responseCode, String... params) {
         this.code = responseCode.getCode();
-        this.info = responseCode.getInfo();
+        this.info = String.format(responseCode.getInfo(), params);
     }
 
     public static BaseResponse fromResponseCode(ResponseCode responseCode) {
