@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
+import java.util.List;
+
 /**
  * @author adam
  */
@@ -16,7 +18,7 @@ public class BaseResponse {
     @ApiModelProperty(example = "成功")
     private String info;
 
-    public BaseResponse(ResponseCode responseCode, Object... params) {
+    protected BaseResponse(ResponseCode responseCode, Object... params) {
         this.init(responseCode, params);
     }
 
@@ -41,10 +43,6 @@ public class BaseResponse {
         this.info = String.format(responseCode.getInfo(), params);
     }
 
-    public static BaseResponse fromResponseCode(ResponseCode responseCode) {
-        return new BaseResponse(responseCode);
-    }
-
     @JsonIgnore
     public boolean isSuccess() {
         return this.getCode().equals(ResponseCode.Success.getCode());
@@ -63,5 +61,9 @@ public class BaseResponse {
     @JsonIgnore
     public boolean isError(ResponseCode rc) {
         return this.getCode().equals(rc.getCode());
+    }
+
+    public static BaseResponse gen(ResponseCode responseCode, Object... params) {
+        return new BaseResponse(responseCode, params);
     }
 }
