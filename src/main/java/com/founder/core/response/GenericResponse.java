@@ -12,6 +12,8 @@ public class GenericResponse<T> extends BaseResponse {
     @ApiModelProperty(value = "返回结果", example = "Need further definition")
     protected T result;
 
+    public GenericResponse() {}
+
     protected GenericResponse(ResponseCode responseCode, Object... params) {
         super(responseCode, params);
     }

@@ -18,6 +18,9 @@ public class BaseResponse {
     @ApiModelProperty(example = "成功")
     private String info;
 
+    public BaseResponse() {
+    }
+
     protected BaseResponse(ResponseCode responseCode, Object... params) {
         this.init(responseCode, params);
     }

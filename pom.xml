@@ -8,6 +8,14 @@
     <artifactId>lib-response</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 
+    <properties>
+        <java.version>1.8</java.version>
+        <maven.compiler.source>${java.version}</maven.compiler.source>
+        <maven.compiler.target>${java.version}</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.encoding>UTF-8</maven.compiler.encoding>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>io.swagger</groupId>
@@ -35,7 +43,6 @@
             </resource>
         </resources>
     </build>
-
 
     <distributionManagement>
         <repository>
