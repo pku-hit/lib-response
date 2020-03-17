@@ -9,28 +9,43 @@ import java.util.Map;
 /**
  * @author adam
  */
-@ApiModel(value = "MapResponse", description = "通用列表返回结构")
-public class MapResponse<K, V> extends GenericResponse<Map<K, V>> {
+@ApiModel(value = "MapResponse", description = "通用Map返回结构")
+public class MapResponse<K, V> extends BaseResponse {
+
+    protected Map<K, V> result;
 
     public MapResponse() {
         this.result = new HashMap<K, V>();
     }
 
-    private MapResponse(ResponseCode responseCode, Object... params) {
-        super(responseCode, params);
-        this.result = new HashMap<K, V>();
+    public MapResponse(ResponseCode input) {
+        super(input);
+    }
+
+    public Map<K, V> getResult() {
+        return result;
+    }
+
+    public void setResult(Map<K, V> result) {
+        this.result = result;
     }
 
     public void put(K key, V value) {
         this.result.put(key, value);
     }
 
-    public static <K, V> MapResponse genSuccess() {
-        MapResponse<K, V> resp = new MapResponse<K, V>(ResponseCode.Success);
+
+    public static <K, V> MapResponse gen(ResponseCode responseCode, Map<K, V> results) {
+        MapResponse<K, V> resp = new MapResponse(responseCode);
+        resp.setResult(results);
         return resp;
     }
 
-    public static MapResponse genError(ResponseCode responseCode, Object... params) {
-        return new MapResponse(responseCode, params);
+    public static <K, V> MapResponse genSuccess(Map<K, V> result) {
+        return gen(ResponseCode.Success, result);
+    }
+
+    public static <K, V> MapResponse genError(ResponseCode responseCode, String message) {
+        return gen(ResponseCode.build(responseCode, message), null);
     }
 }

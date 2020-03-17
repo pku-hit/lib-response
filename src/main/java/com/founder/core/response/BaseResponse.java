@@ -21,8 +21,9 @@ public class BaseResponse {
     public BaseResponse() {
     }
 
-    protected BaseResponse(ResponseCode responseCode, Object... params) {
-        this.init(responseCode, params);
+    protected BaseResponse(ResponseCode responseCode) {
+        this.code = responseCode.getCode();
+        this.info = responseCode.getInfo();
     }
 
     public String getCode() {
@@ -41,9 +42,9 @@ public class BaseResponse {
         this.info = info;
     }
 
-    public void init(ResponseCode responseCode, Object... params) {
-        this.code = responseCode.getCode();
-        this.info = String.format(responseCode.getInfo(), params);
+    @JsonIgnore
+    public ResponseCode getRespCode() {
+        return new ResponseCode(code, info);
     }
 
     @JsonIgnore
@@ -66,7 +67,11 @@ public class BaseResponse {
         return this.getCode().equals(rc.getCode());
     }
 
-    public static BaseResponse gen(ResponseCode responseCode, Object... params) {
-        return new BaseResponse(responseCode, params);
+    public static BaseResponse gen(ResponseCode responseCode) {
+        return new BaseResponse(responseCode);
+    }
+
+    public static BaseResponse genSucc() {
+        return gen(ResponseCode.Success);
     }
 }

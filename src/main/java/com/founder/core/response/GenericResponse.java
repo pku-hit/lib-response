@@ -12,10 +12,11 @@ public class GenericResponse<T> extends BaseResponse {
     @ApiModelProperty(value = "返回结果", example = "Need further definition")
     protected T result;
 
-    public GenericResponse() {}
+    public GenericResponse() {
+    }
 
-    protected GenericResponse(ResponseCode responseCode, Object... params) {
-        super(responseCode, params);
+    public GenericResponse(ResponseCode input) {
+        super(input);
     }
 
     public T getResult() {
@@ -26,13 +27,17 @@ public class GenericResponse<T> extends BaseResponse {
         this.result = result;
     }
 
-    public static <T> GenericResponse genSuccess(T result) {
-        GenericResponse<T> resp = new GenericResponse<T>(ResponseCode.Success);
+    public static <T> GenericResponse gen(ResponseCode responseCode, T result) {
+        GenericResponse<T> resp = new GenericResponse(responseCode);
         resp.setResult(result);
         return resp;
     }
 
-    public static GenericResponse genError(ResponseCode responseCode, Object... params) {
-        return new GenericResponse(responseCode, params);
+    public static <T> GenericResponse genSuccess(T result) {
+        return gen(ResponseCode.Success, result);
+    }
+
+    public static <T> GenericResponse genError(ResponseCode responseCode, String message) {
+        return gen(ResponseCode.build(responseCode, message), null);
     }
 }

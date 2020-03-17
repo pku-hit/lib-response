@@ -9,20 +9,36 @@ import java.util.List;
  * @author adam
  */
 @ApiModel(value = "PageResponse", description = "通用分页返回结构")
-public class PageResponse<T> extends GenericResponse<PageInfo<T>> {
+public class PageResponse<T> extends BaseResponse {
 
-    protected PageResponse(ResponseCode responseCode, Object... params) {
-        super(responseCode, params);
+    protected PageInfo<T> result;
+
+    public PageResponse() {
     }
 
+    public PageResponse(ResponseCode input) {
+        super(input);
+    }
 
-    public static <T> PageResponse genSuccess(PageInfo<T> result) {
-        PageResponse<T> resp = new PageResponse<T>(ResponseCode.Success);
-        resp.setResult(result);
+    public PageInfo<T> getResult() {
+        return result;
+    }
+
+    public void setResult(PageInfo<T> result) {
+        this.result = result;
+    }
+
+    public static <T> PageResponse gen(ResponseCode responseCode, PageInfo<T> results) {
+        PageResponse<T> resp = new PageResponse(responseCode);
+        resp.setResult(results);
         return resp;
     }
 
-    public static PageResponse genError(ResponseCode responseCode, Object... params) {
-        return new PageResponse(responseCode, params);
+    public static <T> PageResponse genSuccess(PageInfo<T> result) {
+        return gen(ResponseCode.Success, result);
+    }
+
+    public static <T> PageResponse genError(ResponseCode responseCode, String message) {
+        return gen(ResponseCode.build(responseCode, message), null);
     }
 }
